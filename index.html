@@ -32,7 +32,6 @@
       box-sizing: border-box;
     }
 
-    /* Show notice only on narrow screens in portrait mode */
     @media screen and (max-width: 768px) and (orientation: portrait) {
       .rotate-notice {
         display: block;
@@ -57,13 +56,11 @@
       margin-bottom: 16px;
     }
 
-    /* Math font styling */
     .math {
       font-family: 'Cambria Math', 'STIX Two Math', 'Times New Roman', serif;
       font-style: italic;
     }
 
-    /* 7-Column Layout: Grid + Colorbar in 7th Column */
     .animation-grid {
       display: grid;
       grid-template-columns: 70px 70px repeat(4, 1fr) 45px;
@@ -72,7 +69,6 @@
       background-color: #ffffff;
     }
 
-    /* Shared Cell Formatting */
     .grid-cell {
       display: flex;
       justify-content: center;
@@ -80,7 +76,6 @@
       font-size: 1.2rem;
     }
 
-    /* Grey Banners */
     .grey-banner {
       background-color: #a6a6a6;
       color: #000000;
@@ -96,13 +91,11 @@
       grid-row: 3 / span 3;
     }
 
-    /* Blue Headers */
     .blue-cell {
       background-color: #8faadc;
       color: #000000;
     }
 
-    /* Video Container & Floating J Overlay */
     .video-cell {
       position: relative;
       width: 100%;
@@ -117,10 +110,19 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      pointer-events: none; /* Prevents touch/click native UI buttons on iPad */
       -webkit-transform: translateZ(0);
     }
 
-    /* Floating J-bar Overlay at Bottom Right of Each Video */
+    /* Remove WebKit play controls overlay on iOS/iPadOS */
+    video::-webkit-media-controls {
+      display: none !important;
+    }
+    video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      -webkit-appearance: none !important;
+    }
+
     .j-overlay {
       position: absolute;
       bottom: 6px;
@@ -146,10 +148,9 @@
       margin-right: 2px;
     }
 
-    /* Matplotlib PRGn Side Colorbar (Placed in Column 7) */
     .colorbar-wrapper {
       grid-column: 7;
-      grid-row: 3 / span 3; /* Spans exact height of the 3 figure rows */
+      grid-row: 3 / span 3;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -186,7 +187,6 @@
       border: 1px solid #000000;
     }
 
-    /* "a.u." Embedded Directly Inside the Colorbar Graphic */
     .colorbar-inside-label {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
@@ -200,7 +200,6 @@
 </head>
 <body>
 
-<!-- Device Rotate Hint Banner -->
 <div class="rotate-notice">
   🔄 <strong>Best viewed in landscape:</strong> Please rotate your device sideways for optimal grid display.
 </div>
@@ -212,12 +211,10 @@
   <div class="slide-subtitle">(animations are plotted <strong>without</strong> the approximation)</div>
 
   <div class="animation-grid">
-    <!-- Top Grey Banner -->
     <div class="grid-cell grey-banner sigma-top">
       <span class="math">&sigma;'</span> = &minus;1
     </div>
 
-    <!-- Column Headers (Blue Cells) -->
     <div class="grid-cell blue-cell" style="grid-column: 3; grid-row: 2;">
       <span class="math">&ell;'</span> = &minus;1
     </div>
@@ -231,111 +228,82 @@
       <span class="math">&ell;'</span> = 2
     </div>
 
-    <!-- Left Grey Banner -->
     <div class="grid-cell grey-banner sigma-left">
       <span class="math">&sigma;</span> = 1
     </div>
 
-    <!-- Row 3: l = -1 -->
     <div class="grid-cell blue-cell" style="grid-column: 2; grid-row: 3;">
       <span class="math">&ell;</span> = &minus;1
     </div>
     
     <div class="video-cell" style="grid-column: 3; grid-row: 3;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_-1_lp_-1_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_-1_lp_-1_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay"><span class="j-bar-text">J</span> = &minus;1</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 3;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_-1_lp_0_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_-1_lp_0_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">&minus;1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 3;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_-1_lp_1_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_-1_lp_1_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 3;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_-1_lp_2_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_-1_lp_2_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">1/2</div>
     </div>
 
-    <!-- Row 4: l = 0 -->
     <div class="grid-cell blue-cell" style="grid-column: 2; grid-row: 4;">
       <span class="math">&ell;</span> = 0
     </div>
 
     <div class="video-cell" style="grid-column: 3; grid-row: 4;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_0_lp_-1_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_0_lp_-1_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">&minus;1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 4;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_0_lp_0_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_0_lp_0_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 4;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_0_lp_1_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_0_lp_1_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 4;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_0_lp_2_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_0_lp_2_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">1</div>
     </div>
 
-    <!-- Row 5: l = 1 -->
     <div class="grid-cell blue-cell" style="grid-column: 2; grid-row: 5;">
       <span class="math">&ell;</span> = 1
     </div>
 
     <div class="video-cell" style="grid-column: 3; grid-row: 5;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_1_lp_-1_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_1_lp_-1_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 5;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_1_lp_0_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_1_lp_0_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 5;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_1_lp_1_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_1_lp_1_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">1</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 5;">
-      <video autoplay loop muted playsinline webkit-playsinline preload="auto" oncanplay="this.play()">
-        <source src="l_1_lp_2_longitudinal.mp4" type="video/mp4">
-      </video>
+      <video src="l_1_lp_2_longitudinal.mp4" muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlsList="nodownload no-fullscreen noremoteplayback"></video>
       <div class="j-overlay">3/2</div>
     </div>
 
-    <!-- Matplotlib PRGn Side Colorbar with embedded 'a.u.' -->
     <div class="colorbar-wrapper">
       <div class="colorbar-tick">1</div>
       <div class="colorbar-graphic">
@@ -346,29 +314,57 @@
   </div>
 </div>
 
-<!-- JavaScript Autoplay Fix for iPad / iPadOS -->
 <script>
-  function playAllVideos() {
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.setAttribute('muted', '');
-      video.setAttribute('playsinline', '');
-      
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Retry playback on user interaction if iPad blocks unprompted autoplay
-          document.addEventListener('touchstart', () => video.play(), { once: true });
-          document.addEventListener('click', () => video.play(), { once: true });
+  async function syncAndPlayAllVideos() {
+    const videos = Array.from(document.querySelectorAll('video'));
+
+    // Step 1: Ensure muted state is set programmatically BEFORE loading
+    videos.forEach(v => {
+      v.muted = true;
+      v.defaultMuted = true;
+      v.pause();
+    });
+
+    // Step 2: Wait until every video has loaded enough frame data (readyState >= 2)
+    const loadPromises = videos.map(v => {
+      return new Promise((resolve) => {
+        if (v.readyState >= 2) {
+          resolve();
+        } else {
+          v.addEventListener('canplay', () => resolve(), { once: true });
+          v.load();
+        }
+      });
+    });
+
+    await Promise.all(loadPromises);
+
+    // Step 3: Align playback time to 0.0 seconds across all videos
+    videos.forEach(v => {
+      v.currentTime = 0;
+    });
+
+    // Step 4: Batch play simultaneously
+    const playPromises = videos.map(v => v.play());
+    
+    // Fallback trigger for iOS/iPad initial user interaction policy
+    Promise.all(playPromises).catch(() => {
+      const forcePlayOnInteraction = () => {
+        videos.forEach(v => {
+          v.currentTime = 0;
+          v.play();
         });
-      }
+      };
+      document.addEventListener('touchstart', forcePlayOnInteraction, { once: true });
+      document.addEventListener('click', forcePlayOnInteraction, { once: true });
     });
   }
 
-  document.addEventListener('DOMContentLoaded', playAllVideos);
-  window.addEventListener('load', playAllVideos);
+  if (document.readyState === 'complete') {
+    syncAndPlayAllVideos();
+  } else {
+    window.addEventListener('load', syncAndPlayAllVideos);
+  }
 </script>
 
 </body>
