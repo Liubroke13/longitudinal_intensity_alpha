@@ -16,6 +16,29 @@
       align-items: center;
     }
 
+    /* Rotation Notice Banner for Mobile Portrait Mode */
+    .rotate-notice {
+      display: none;
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+      padding: 10px 16px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+      width: 100%;
+      max-width: 960px;
+      box-sizing: border-box;
+    }
+
+    /* Show notice only on narrow screens in portrait mode */
+    @media screen and (max-width: 768px) and (orientation: portrait) {
+      .rotate-notice {
+        display: block;
+      }
+    }
+
     .slide-container {
       width: 100%;
       max-width: 1050px;
@@ -94,6 +117,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      -webkit-transform: translateZ(0);
     }
 
     /* Floating J-bar Overlay at Bottom Right of Each Video */
@@ -177,6 +201,11 @@
 </head>
 <body>
 
+<!-- Device Rotate Hint Banner (Only shows in portrait mode on mobile/small screens) -->
+<div class="rotate-notice">
+  🔄 <strong>Best viewed in landscape:</strong> Please rotate your device sideways for optimal grid display.
+</div>
+
 <div class="slide-container">
   <div class="slide-title">
     In the right animations : <span class="math">&alpha;</span> = 0, <span class="math">&beta;</span> = <span class="math">&pi;</span>/2
@@ -214,22 +243,22 @@
     </div>
     
     <div class="video-cell" style="grid-column: 3; grid-row: 3;">
-      <video src="l_-1_lp_-1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_-1_lp_-1_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay"><span class="j-bar-text">J</span> = &minus;1</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 3;">
-      <video src="l_-1_lp_0_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_-1_lp_0_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">&minus;1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 3;">
-      <video src="l_-1_lp_1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_-1_lp_1_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 3;">
-      <video src="l_-1_lp_2_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_-1_lp_2_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">1/2</div>
     </div>
 
@@ -239,22 +268,22 @@
     </div>
 
     <div class="video-cell" style="grid-column: 3; grid-row: 4;">
-      <video src="l_0_lp_-1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_0_lp_-1_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">&minus;1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 4;">
-      <video src="l_0_lp_0_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_0_lp_0_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 4;">
-      <video src="l_0_lp_1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_0_lp_1_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 4;">
-      <video src="l_0_lp_2_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_0_lp_2_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">1</div>
     </div>
 
@@ -264,22 +293,22 @@
     </div>
 
     <div class="video-cell" style="grid-column: 3; grid-row: 5;">
-      <video src="l_1_lp_-1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_1_lp_-1_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 5;">
-      <video src="l_1_lp_0_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_1_lp_0_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 5;">
-      <video src="l_1_lp_1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_1_lp_1_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">1</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 5;">
-      <video src="l_1_lp_2_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
+      <video src="l_1_lp_2_longitudinal.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="j-overlay">3/2</div>
     </div>
 
@@ -293,6 +322,19 @@
     </div>
   </div>
 </div>
+
+<!-- JavaScript Fallback to Force Autoplay on iOS / iPadOS -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+      video.muted = true;
+      video.play().catch(error => {
+        console.log("Autoplay forced retry:", error);
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
