@@ -16,29 +16,6 @@
       align-items: center;
     }
 
-    /* Rotation Notice Banner for Mobile Portrait Mode */
-    .rotate-notice {
-      display: none;
-      background-color: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffeeba;
-      padding: 10px 16px;
-      border-radius: 6px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-size: 0.95rem;
-      width: 100%;
-      max-width: 1050px;
-      box-sizing: border-box;
-    }
-
-    /* Show notice only on mobile/narrow screens when held in portrait mode */
-    @media screen and (max-width: 768px) and (orientation: portrait) {
-      .rotate-notice {
-        display: block;
-      }
-    }
-
     .slide-container {
       width: 100%;
       max-width: 1050px;
@@ -148,7 +125,7 @@
     /* Matplotlib PRGn Side Colorbar (Placed in Column 7) */
     .colorbar-wrapper {
       grid-column: 7;
-      grid-row: 3 / span 3;
+      grid-row: 3 / span 3; /* Spans exact height of the 3 figure rows */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -171,6 +148,7 @@
       justify-content: center;
       align-items: flex-end;
       padding-bottom: 12px;
+      /* Official Matplotlib PRGn scale gradient: Green -> White -> Purple */
       background: linear-gradient(to bottom, 
         #00441b 0%, 
         #1b7837 15%, 
@@ -198,11 +176,6 @@
   </style>
 </head>
 <body>
-
-<!-- Device Tilt / Rotate Hint Banner (Only shows in portrait on mobile) -->
-<div class="rotate-notice">
-  🔄 <strong>Best viewed in landscape:</strong> Please rotate your device sideways for optimal grid display.
-</div>
 
 <div class="slide-container">
   <div class="slide-title">
@@ -241,30 +214,22 @@
     </div>
     
     <div class="video-cell" style="grid-column: 3; grid-row: 3;">
-      <video autoplay loop muted playsinline>
-        <source src="l_-1_lp_-1_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_-1_lp_-1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay"><span class="j-bar-text">J</span> = &minus;1</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 3;">
-      <video autoplay loop muted playsinline>
-        <source src="l_-1_lp_0_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_-1_lp_0_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">&minus;1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 3;">
-      <video autoplay loop muted playsinline>
-        <source src="l_-1_lp_1_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_-1_lp_1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 3;">
-      <video autoplay loop muted playsinline>
-        <source src="l_-1_lp_2_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_-1_lp_2_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">1/2</div>
     </div>
 
@@ -274,30 +239,22 @@
     </div>
 
     <div class="video-cell" style="grid-column: 3; grid-row: 4;">
-      <video autoplay loop muted playsinline>
-        <source src="l_0_lp_-1_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_0_lp_-1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">&minus;1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 4;">
-      <video autoplay loop muted playsinline>
-        <source src="l_0_lp_0_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_0_lp_0_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 4;">
-      <video autoplay loop muted playsinline>
-        <source src="l_0_lp_1_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_0_lp_1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 4;">
-      <video autoplay loop muted playsinline>
-        <source src="l_0_lp_2_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_0_lp_2_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">1</div>
     </div>
 
@@ -307,30 +264,22 @@
     </div>
 
     <div class="video-cell" style="grid-column: 3; grid-row: 5;">
-      <video autoplay loop muted playsinline>
-        <source src="l_1_lp_-1_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_1_lp_-1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">0</div>
     </div>
 
     <div class="video-cell" style="grid-column: 4; grid-row: 5;">
-      <video autoplay loop muted playsinline>
-        <source src="l_1_lp_0_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_1_lp_0_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">1/2</div>
     </div>
 
     <div class="video-cell" style="grid-column: 5; grid-row: 5;">
-      <video autoplay loop muted playsinline>
-        <source src="l_1_lp_1_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_1_lp_1_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">1</div>
     </div>
 
     <div class="video-cell" style="grid-column: 6; grid-row: 5;">
-      <video autoplay loop muted playsinline>
-        <source src="l_1_lp_2_longitudinal_real_a=0.mp4" type="video/mp4">
-      </video>
+      <video src="l_1_lp_2_longitudinal_real_a=0.mp4" autoplay loop muted playsinline></video>
       <div class="j-overlay">3/2</div>
     </div>
 
