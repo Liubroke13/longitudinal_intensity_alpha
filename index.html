@@ -117,7 +117,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      -webkit-transform: translateZ(0);
     }
 
     /* Floating J-bar Overlay at Bottom Right of Each Video */
@@ -186,6 +185,7 @@
       border: 1px solid #000000;
     }
 
+    /* "a.u." Embedded Directly Inside the Colorbar Graphic */
     .colorbar-inside-label {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
@@ -216,7 +216,7 @@
       <span class="math">&sigma;'</span> = &minus;1
     </div>
 
-    <!-- Column Headers -->
+    <!-- Column Headers (Blue Cells) -->
     <div class="grid-cell blue-cell" style="grid-column: 3; grid-row: 2;">
       <span class="math">&ell;'</span> = &minus;1
     </div>
@@ -321,35 +321,32 @@
   </div>
 </div>
 
-<!-- Universal Autoplay Script for Safari, iOS, and Edge -->
+<!-- Robust Cross-Browser Autoplay Initializer -->
 <script>
-  function playAllVideos() {
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.setAttribute('muted', '');
-      video.setAttribute('playsinline', '');
-      
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log("Autoplay blocked, waiting for user interaction:", error);
-        });
-      }
-    });
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const startVideos = () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Force load and retry play if initial trigger failed
+            video.load();
+            video.play().catch(e => console.log("Autoplay prevented:", e));
+          });
+        }
+      });
+    };
 
-  // Run on page load
-  document.addEventListener('DOMContentLoaded', playAllVideos);
-  window.addEventListener('load', playAllVideos);
+    startVideos();
 
-  // Fallback: trigger playback on first user click/touch if browser blocks autoplay
-  ['click', 'touchstart'].forEach(eventType => {
-    document.addEventListener(eventType, function startOnUserInteraction() {
-      playAllVideos();
-      document.removeEventListener(eventType, startOnUserInteraction);
-    }, { once: true });
+    // Secondary trigger on user interaction in case low-power mode blocked autoplay
+    window.addEventListener('touchstart', startVideos, { once: true });
+    window.addEventListener('click', startVideos, { once: true });
   });
 </script>
 
