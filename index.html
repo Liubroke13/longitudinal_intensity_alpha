@@ -103,11 +103,11 @@
       right: 8px;
       color: #000000;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: normal;
       pointer-events: none;
       background-color: rgba(255, 255, 255, 0.85);
-      padding: 1px 6px;
+      padding: 2px 6px;
       border-radius: 3px;
       display: flex;
       align-items: center;
@@ -115,17 +115,29 @@
       z-index: 10;
     }
 
+    /* Tight, beautifully aligned math-style J-bar */
     .j-bar-text {
-      text-decoration: overline;
+      position: relative;
       font-style: italic;
       display: inline-block;
-      margin-right: 2px;
+      margin-right: 3px;
+      padding-top: 1px;
     }
 
-    /* Matplotlib PRGn Side Colorbar (Placed in Column 7) */
+    .j-bar-text::before {
+      content: '';
+      position: absolute;
+      top: 2px; /* Controls exact vertical position of the bar above J */
+      left: 0;
+      width: 100%;
+      height: 1.2px; /* Thickness of the overline */
+      background-color: #000000;
+    }
+
+    /* Matplotlib PRGn Side Colorbar */
     .colorbar-wrapper {
       grid-column: 7;
-      grid-row: 3 / span 3; /* Spans exact height of the 3 figure rows */
+      grid-row: 3 / span 3;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -148,7 +160,6 @@
       justify-content: center;
       align-items: flex-end;
       padding-bottom: 12px;
-      /* Official Matplotlib PRGn scale gradient: Green -> White -> Purple */
       background: linear-gradient(to bottom, 
         #00441b 0%, 
         #1b7837 15%, 
@@ -163,7 +174,6 @@
       border: 1px solid #000000;
     }
 
-    /* "a.u." Embedded Directly Inside the Colorbar Graphic */
     .colorbar-inside-label {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
@@ -179,7 +189,7 @@
 
 <div class="slide-container">
   <div class="slide-title">
-    In the right animations : <span class="math">&alpha;</span> = 0, <span class="math">&beta;</span> = <span class="math">&pi;</span>/2
+    In the below animations : <span class="math">&alpha;</span> = 0, <span class="math">&beta;</span> = <span class="math">&pi;</span>/2
   </div>
   <div class="slide-subtitle">(animations are plotted <strong>without</strong> the approximation)</div>
 
